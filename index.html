@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise_05</title>
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/index.responsive.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <section id="Registration" class="py-5">
+            <div class="container text-center">
+                <div class="image mb-4">
+                    <img src="images/logo-be01d065.png" alt="" class="img-fluid">
+                </div>
+                <div class="box py-4 px-3 rounded-4">
+                    <h4 class="mb-4">Students System</h4>
+                    <form>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="firstName"
+                                placeholder="First Name *"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <p class="alert alert-danger d-none text-start"></p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user">
+                                </i>
+                            </span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="lastName"
+                                placeholder="Last Name *"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <p class="alert alert-danger d-none text-start"></p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-envelope">
+                                </i>
+                            </span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="email"
+                                placeholder="Email *"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <p class="alert alert-danger d-none text-start"></p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-hashtag">
+                                </i>
+                            </span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="age"
+                                placeholder="Age *"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <p class="alert alert-danger d-none text-start"></p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-mobile">
+                                </i>
+                            </span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="phone"
+                                placeholder="Phone *"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <p class="alert alert-danger d-none text-start"></p>
+                        <button class="btn btn-success w-100">Add</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="Filtration" class="pb-5">
+            <div class="container">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="search"
+                        placeholder="Search..."
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+        </section>
+        <section id="Students">
+            <div class="container">
+                <div class="cover">
+                    <table class="table rounded-3 overflow-hidden">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/global-functions.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
