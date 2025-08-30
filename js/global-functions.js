@@ -55,7 +55,8 @@ function checkInput(input) {
     if (inputValue == "") {
         inputAlert.textContent = "This Field is Required";
         inputAlert.classList.remove("d-none");
-        input.setAttribute("data-valid", false);
+         input.setAttribute("data-valid", false);
+        
     }
 
     else if (!regex.test(inputValue)) {
@@ -78,34 +79,36 @@ function showAllStudents(currentStudents) {
     });
 }
 
-function updateLocalStorage(){
+function updateLocalStorage() {
     localStorage.setItem("students", JSON.stringify(students));
     localStorage.setItem("id", JSON.stringify(id));
 }
 
-function deleteStudent(studentId, that){
+function deleteStudent(studentId, that) {
 
-    if (!confirm("Are You Sure")){
-        return 0 ;
+    if (!confirm("Are You Sure")) {
+        return 0;
     }
 
-    students = students.filter((student) => {return student.id != studentId});
+    students = students.filter((student) => { return student.id != studentId });
 
     updateLocalStorage();
 
     that.parentElement.parentElement.remove();
 }
 
-function editStudent(studentId){
+function editStudent(studentId) {
 
-    let student = students.filter((student) => {student.id === studentId})[0];
+    let student = students.filter((student) => { student.id === studentId })[0];
 
-    formInputs.forEach((e) =>{
+
+
+    formInputs.forEach((e) => {
         formInput.value = student[formInput.name];
     });
 
     formEle.dataset.type = "edit";
-    formButton.querySelector("button").classList.replace("btn-success" , "btn-info");
+    formButton.querySelector("button").classList.replace("btn-success", "btn-info");
     formButton.textContent = "Edit";
 
     formEle.setAttribute("data-student-id", student.id)

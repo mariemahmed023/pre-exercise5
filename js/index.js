@@ -32,7 +32,10 @@ formEle.addEventListener("submit", function (e)  {
     e.preventDefault();
 
     if (formEle.dataset.type == "add"){
-        formEle.querySelector("input:focus").blur();
+        const focusedInput = formEle.querySelector("input:focus")
+        if (focusedInput){
+            focusedInput.blur();
+        }
     for ( let formInput of formInputs){
         if (formInput.dataset.valid === "false"){
             return 0;
@@ -49,10 +52,6 @@ formEle.addEventListener("submit", function (e)  {
     showStudent(newStudent);
 
     this.reset();
-    }
-
-    else if (formEle.dataset.type = "edit"){
-        
     }
 
 });
