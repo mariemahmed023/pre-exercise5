@@ -45,7 +45,7 @@ function checkInput(input) {
     }
 
     else if (inputName == "age") {
-        regex = /^[1 - 9]{1}[0-9]?$/;
+        regex = /^[1-9]{1}[0-9]?$/;
     }
 
     else if (inputName == "phone") {
@@ -55,8 +55,7 @@ function checkInput(input) {
     if (inputValue == "") {
         inputAlert.textContent = "This Field is Required";
         inputAlert.classList.remove("d-none");
-         input.setAttribute("data-valid", false);
-        
+        input.setAttribute("data-valid", false);
     }
 
     else if (!regex.test(inputValue)) {
