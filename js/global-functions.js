@@ -98,16 +98,25 @@ function deleteStudent(studentId, that) {
 
 function editStudent(studentId) {
 
-    let student = students.filter((student) => { student.id === studentId })[0];
+    let student = students.filter((student) => { return student.id === studentId })[0];
 
 
 
-    formInputs.forEach((e) => {
+    formInputs.forEach((formInput) => {
         formInput.value = student[formInput.name];
     });
 
     formEle.dataset.type = "edit";
-    formButton.querySelector("button").classList.replace("btn-success", "btn-info");
+    //formButton.querySelector("button").classList.replace(" btn-success"," btn-info");
+    if (formButton && formButton.querySelector("button")) {
+        formButton.querySelector("button").classList.replace("btn-success", "btn-info");
+    }
+
+    const btn = formButton.querySelector("button");
+    if (btn && btn.classList.contains("btn-success")){
+        btn.classList.replace("btn-success", "btn-info");
+    }
+
     formButton.textContent = "Edit";
 
     formEle.setAttribute("data-student-id", student.id)
