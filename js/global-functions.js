@@ -20,7 +20,7 @@ function showStudent(student) {
                                 <td>${student.age}</td>
                                 <td>${student.phone}</td>
                                 <td>
-                                    <button class="btn btn-info text-light me-2" onclick="editStudent(${student.id})">
+                                    <button class="btn btn-info text-light me-2" onclick="setStudent(${student.id})">
                                         Edit
                                     </button>
                                     <button class="btn btn-danger text-light" onclick="deleteStudent(${student.id}, this)">
@@ -73,6 +73,7 @@ function checkInput(input) {
 }
 
 function showAllStudents(currentStudents) {
+    tbody.innerHTML = "";
     currentStudents.forEach((student) => {
         showStudent(student);
     });
@@ -96,28 +97,88 @@ function deleteStudent(studentId, that) {
     that.parentElement.parentElement.remove();
 }
 
-function editStudent(studentId) {
+function setStudent(studentId) {
 
-    let student = students.filter((student) => { return student.id === studentId })[0];
+    resetForm();
+
+    let student = students.filter((currentStudent) => { return currentStudent.id === studentId })[0];
 
 
 
     formInputs.forEach((formInput) => {
         formInput.value = student[formInput.name];
+        formInput.dataset.valid = "true";
     });
 
-    formEle.dataset.type = "edit";
-    //formButton.querySelector("button").classList.replace(" btn-success"," btn-info");
-    if (formButton && formButton.querySelector("button")) {
-        formButton.querySelector("button").classList.replace("btn-success", "btn-info");
-    }
 
-    const btn = formButton.querySelector("button");
+
+    formEle.dataset.type = "edit";
+    // formButton.querySelector("button").classList.replace("btn-success", "btn-info");
+    // if (formButton && formButton.querySelector("button")) {
+    //     formButton.querySelector("button").classList.replace("btn-success", "btn-info");
+    // }
+
+   // const btn = formButton.querySelector("button");
+const btn = document.querySelector("button.btn-success");
+
     if (btn && btn.classList.contains("btn-success")){
         btn.classList.replace("btn-success", "btn-info");
     }
+
+
 
     formButton.textContent = "Edit";
 
     formEle.setAttribute("data-student-id", student.id)
 }
+
+function resetForm (){
+    formEle.reset();
+    formInputs.forEach(function (formInput){
+        formInput.dataset.valid = "false";
+        formInput.parentElement.nextElementSibling.classList.add("d-none");
+    });
+}
+
+function addStudent(){
+    formEle.querySelector("input:focus")?.blur();
+        for (let formInput of formInputs) {
+            if (formInput.dataset.valid === "false") {
+                return 0;
+            }
+        }
+
+        let newStudent = getStudent(++id);
+
+
+        students.push(newStudent);
+
+        updateLocalStorage();
+
+        showStudent(newStudent);
+
+        resetForm();
+}
+
+function editStudent(){
+    formEle.querySelector("input:focus")?.blur();
+        for (let formInput of formInputs) {
+            if (formInput.dataset.valid === "false") {
+                return 0;
+            }
+        }
+
+        let idOfEditStudent = formEle.getAttribute("data-student-id");
+
+        let updatedStudent = getStudent(idOfEditStudent);
+
+        let indexOfEditStudent = students.findIndex((student) => {return student.id == idOfEditStudent;});
+
+        students[indexOfEditStudent] = updatedStudent;
+
+        updateLocalStorage();
+
+        showAllStudents(students);
+
+        resetForm();
+    }

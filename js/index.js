@@ -6,59 +6,46 @@ let formEle = document.querySelector("form"),
     validInputs = [],
     formButton = formEle.querySelector("button");
 
-    (function (){
-        if (localStorage.getItem("students") == null){
-        localStorage.setItem("students" , JSON.stringify(students));
+(function () {
+    if (localStorage.getItem("students") == null) {
+        localStorage.setItem("students", JSON.stringify(students));
     }
 
     else {
         students = JSON.parse(localStorage.getItem("students"));
     }
 
-    if (localStorage.getItem("id") == null){
-        localStorage.setItem("id" , id);
+    if (localStorage.getItem("id") == null) {
+        localStorage.setItem("id", id);
     }
 
     else {
         id = +(localStorage.getItem("id"));
     }
     showAllStudents(students);
-    })();
-
-    
+})();
 
 
-formEle.addEventListener("submit", function (e)  {
+
+
+formEle.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (formEle.dataset.type == "add"){
-        const focusedInput = formEle.querySelector("input:focus")
-        if (focusedInput){
-            focusedInput.blur();
-        }
-    for ( let formInput of formInputs){
-        if (formInput.dataset.valid === "false"){
-            return 0;
-        }
+    if (formEle.dataset.type == "add") {
+
+        addStudent();
+
     }
 
-    let newStudent = getStudent(++id);
-
-
-    students.push(newStudent);
-
-    updateLocalStorage();
-
-    showStudent(newStudent);
-
-    this.reset();
+    else if (formEle.dataset.type == "edit") {
+        editStudent();
     }
 
 });
 
-for ( let formInput of formInputs){
-        formInput.addEventListener("blur",function(){
-            checkInput(formInput);
-        });
-    }
+for (let formInput of formInputs) {
+    formInput.addEventListener("blur", function () {
+        checkInput(formInput);
+    });
+}
 
